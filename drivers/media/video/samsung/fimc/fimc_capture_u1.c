@@ -1816,13 +1816,11 @@ int fimc_streamon_capture(void *fh)
 					return ret;
 			} else {
 #ifdef CONFIG_TARGET_LOCALE_KOR
-				if ((cap->vt_mode != 0) &&
-				    (cap->fmt.priv != V4L2_PIX_FMT_MODE_CAPTURE) &&
-				    (get_fimc_dev()->active_camera == 1)) {
+				if ((ctrl->cap->vt_mode != 0) &&
 #else
-				if ((cap->vt_mode == 1) &&
-				    (get_fimc_dev()->active_camera == 1)) {
+				if ((ctrl->cap->vt_mode == 1) &&
 #endif
+				    (get_fimc_dev()->active_camera == 1)) {
 					ctrl->cam->window.left = 27;
 					ctrl->cam->window.top = 0;
 					ctrl->cam->window.width = 586;
